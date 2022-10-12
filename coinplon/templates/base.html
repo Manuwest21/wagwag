@@ -23,7 +23,7 @@
 
         {# Global stylesheets #}
         <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
-
+        <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}">
         {% block extra_css %}
         {# Override this in templates to add extra stylesheets #}
         {% endblock %}
@@ -31,11 +31,13 @@
 
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
-
-        <main id="content" role="main">
-        {% block banner %} {% endblock %}
+        {% include "includes/header.html" %}
+        {% block banner %}{%endblock%}
+        <main id="content" class="container my-4" role="main">
+            {%block content%}{%endblock%}
         </main> 
-        {%block content%}{%endblock%}
+        
+        {% include "includes/footer.html" %}
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
 
